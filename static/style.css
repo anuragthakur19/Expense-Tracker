@@ -1,0 +1,303 @@
+/* Reset default styles for consistency */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Define light mode variables */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --nav-bg: #f5f5f5;
+  --border-color: #ccc;
+  --button-bg: #007bff;
+  --button-text: #ffffff;
+  --link-color: #007bff;
+  --card-bg: #ffffff;
+}
+
+/* Define dark mode variables */
+body.dark-mode {
+  --bg-color: #121212;
+  --text-color: #ffffff;
+  --nav-bg: #1e1e1e;
+  --border-color: #444;
+  --button-bg: #1e90ff;
+  --button-text: #ffffff;
+  --link-color: #1e90ff;
+  --card-bg: #1e1e1e;
+}
+
+/* Global styles with fade-in animation */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+  padding: 20px;
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Container for content */
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  animation: slideUp 0.5s ease-out;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Navbar (dashboard) */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--nav-bg);
+  padding: 15px 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .left,
+.navbar .right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.navbar .center {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.navbar a {
+  color: var(--link-color);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.navbar a:hover {
+  color: var(--button-bg);
+  text-decoration: underline;
+}
+
+/* Form styles (login, register, dashboard) */
+.form-container, .login-container, .register-container {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: 8px;
+  background: var(--card-bg);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.5s ease-out;
+}
+
+.form-container h2, .login-container h2, .register-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--text-color);
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--text-color);
+  font-weight: bold;
+}
+
+.form-group input, .navbar select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: var(--bg-color);
+  color: var(--text-color);
+  transition: border-color 0.3s, transform 0.2s;
+}
+
+.form-group input:focus, .navbar select:focus {
+  outline: none;
+  border-color: var(--button-bg);
+  transform: scale(1.02);
+}
+
+/* Button styles with hover animation */
+button, .form-container button, .login-container button, .register-container button {
+  width: 100%;
+  padding: 12px;
+  background: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover, .form-container button:hover, .login-container button:hover, .register-container button:hover {
+  background: #0056b3;
+  transform: scale(1.05);
+}
+
+/* Links */
+a {
+  color: var(--link-color);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: var(--button-bg);
+  text-decoration: underline;
+}
+
+/* Table styles (dashboard) with row animation */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: var(--card-bg);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+  border: 1px solid var(--border-color);
+  padding: 12px;
+  text-align: center;
+  color: var(--text-color);
+  animation: slideIn 0.5s ease-out;
+}
+
+th {
+  background: var(--nav-bg);
+  font-weight: bold;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* Flashed messages */
+.flash {
+  list-style-type: none;
+  padding: 10px;
+  margin: 10px 0;
+  background: var(--nav-bg);
+  color: var(--text-color);
+  border-radius: 4px;
+  text-align: center;
+  animation: fadeIn 0.5s ease-in;
+}
+
+/* Chart container */
+#categoryChart {
+  margin-top: 20px;
+  animation: slideUp 0.5s ease-out;
+}
+
+/* Toggle switch UI */
+.switch {
+  display: inline-block;
+  --width-of-switch: 3.5em;
+  --height-of-switch: 2em;
+  --size-of-icon: 1.4em;
+  --slider-offset: 0.3em;
+  position: relative;
+  width: var(--width-of-switch);
+  height: var(--height-of-switch);
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 30px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: var(--size-of-icon);
+  width: var(--size-of-icon);
+  border-radius: 20px;
+  left: var(--slider-offset);
+  top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(40deg, #ff0080, #ff8c00 70%);
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #303136;
+}
+
+input:checked + .slider:before {
+  left: calc(100% - (var(--size-of-icon) + var(--slider-offset)));
+  background: #303136;
+  box-shadow: inset -3px -2px 5px -2px #8983f7, inset -10px -4px 0 0 #a3dafb;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .container, .login-container, .register-container, .form-container {
+    padding: 15px;
+    margin: 20px 10px;
+  }
+
+  .navbar {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .navbar .left, .navbar .right {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  table {
+    font-size: 0.9rem;
+  }
+
+  th, td {
+    padding: 8px;
+  }
+
+  .form-group input, .navbar select {
+    padding: 8px;
+  }
+
+  button, .form-container button, .login-container button, .register-container button {
+    padding: 10px;
+  }
+}

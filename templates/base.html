@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Expense Tracker</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body class="light-mode">
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+    <script>
+        const setTheme = (mode) => {
+            document.body.classList.remove('dark-mode', 'light-mode');
+            document.body.classList.add(mode);
+            localStorage.setItem('theme', mode);
+            const themeToggle = document.getElementById('themeToggle');
+            if (themeToggle) themeToggle.checked = (mode === 'dark-mode');
+        };
+
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            setTheme(savedTheme);
+        } else {
+            setTheme('light-mode');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggle = document.getElementById('themeToggle');
+            if (themeToggle) {
+                themeToggle.addEventListener('change', () => {
+                    setTheme(themeToggle.checked ? 'dark-mode' : 'light-mode');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
